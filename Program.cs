@@ -12,8 +12,8 @@ namespace Testing
         {
             //List of options
             optionList = new string[] {
-                "One",
-                "Two",
+                "1- First Option",
+                "2- Second Option",
                 "Exit"
             };
 
@@ -38,9 +38,7 @@ namespace Testing
                 {
                     Console.BackgroundColor = ConsoleColor.Gray;
                     Console.ForegroundColor = ConsoleColor.Black;
-
-                    Console.WriteLine( "        " + optionList[i]);
-
+                    Console.WriteLine("      " + optionList[i]);
                     Console.ResetColor();
                 }
                 else
@@ -56,28 +54,19 @@ namespace Testing
             switch (opt.Key)
             {
                 case ConsoleKey.DownArrow:
-                    if (index == optionList.Length - 1)
-                        index = 0;
-                    else
-                        index++;
+                    index = (index == optionList.Length - 1) ? 0 : index + 1;
                     break;
-
                 case ConsoleKey.UpArrow:
-                    if (index <= 0)
-                        index = optionList.Length - 1;
-                    else
-                        index--;
+                    index = (index == 0) ? optionList.Length - 1 : index - 1;
                     break;
-
                 case ConsoleKey.Enter:
                     optionSelected = index + 1;
                     break;
-
                 default:
                     optionSelected = -1;
                     break;
             }
-
+            
             Console.Clear();
             Console.CursorVisible = true;
         }
@@ -94,19 +83,19 @@ namespace Testing
             {
                 case 1:
                     Console.Clear();
-                    Console.WriteLine("HELLO one!");
+                    Console.WriteLine("First Option Selected");
                     Console.ReadKey();
                     Console.Clear();
                     break;
 
                 case 2:
                     Console.Clear();
-                    Console.WriteLine("HELLO two!");
+                    Console.WriteLine("Second Option Selected");
                     Console.ReadKey();
                     Console.Clear();
                     break;
 
-                case 3:
+                default:
                     status = false;
                     break;
             }
